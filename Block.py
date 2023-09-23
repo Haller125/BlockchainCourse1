@@ -29,6 +29,11 @@ class Block:
         }, sort_keys=True).encode()
 
         return hashlib.sha256(block_string).hexdigest()
+    
+    def proof_of_work(self, difficulty):
+        # Find a number nonce such that hash of the block with nonce has `difficulty` leading zeros
+        while self.hash_block()[:difficulty] != '0' * difficulty:
+            self.nonce += 1
 
 def merkle_tree_root(transactions):
     if not transactions:
