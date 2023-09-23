@@ -26,7 +26,7 @@ class Blockchain:
             'hash': block_hash
         })
 
-    def add_new_block(self, transactions):
+    def add_new_block(self, transactions, difficulty=4):
         last_block = self.chain[-1]
         index = last_block['index'] + 1
         previous_hash = last_block['hash']
@@ -35,7 +35,10 @@ class Blockchain:
             previous_hash=previous_hash,
             transactions=transactions
         )
-        # Here you might include a Proof-of-Work or other consensus algorithm
+
+        # Here you might include a Proof-of-Work or other consensus algorithm --Here we go: 
+        new_block.proof_of_work(difficulty)
+
         self.add_block(new_block)
 
     def add_transaction_to_mempool(self, transaction):
@@ -43,7 +46,7 @@ class Blockchain:
         # For example, check if the sender has enough balance.
         self.mempool.append(transaction)
 
-    def mine_block(self):
+    def mine_block(self, difficulty=4):
         if not self.mempool:
             print("No transactions to mine.")
             return
@@ -58,7 +61,9 @@ class Blockchain:
             transactions=self.mempool
         )
 
-        # Here you might include a Proof-of-Work or other consensus algorithm
+        # Here you might include a Proof-of-Work or other consensus algorithm --Here we go:
+        new_block.proof_of_work(difficulty)
+
         self.add_block(new_block)
 
         # Clear the mempool
