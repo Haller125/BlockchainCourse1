@@ -43,19 +43,21 @@ class Blockchain:
         self.add_block(new_block)
 
     def add_transaction_to_mempool(self, transaction):
-        # In real-world, you'll verify the transaction first.
-        # For example, check if the sender has enough balance.
         sender = transaction['sender']
         recipient = transaction['recipient']
         amount = transaction['amount']
-    
-        # Check if the sender has enough balance
+
+        # Initialize sender and recipient in balances if they don't exist
         if sender not in self.balances:
-            self.balances[sender] = 0
+            self.balances[sender] = 100  # giving an initial amount of 100 for this example
+        if recipient not in self.balances:
+            self.balances[recipient] = 100  # giving an initial amount of 100 for this example
+
+        # Check if the sender has enough balance
         if self.balances[sender] < amount:
             print(f"Transaction failed! {sender} has insufficient funds.")
             return
-    
+
         # Check for negative transactions
         if amount <= 0:
             print("Transaction failed! Amount should be positive.")
