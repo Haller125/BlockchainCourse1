@@ -21,6 +21,30 @@ This assignment provides a simplified implementation of a blockchain, complete w
    python3 main.py
    ```
 
+### Blockchain principles
+
+1. Distributed Ledger
+A blockchain is a type of distributed ledger, which means that a single, identical copy of the record is stored across multiple nodes or computers in a network. No single entity controls the blockchain, making it decentralized. This helps to enhance security and fault tolerance.
+2. Consensus Mechanism
+The network must agree on the validity of transactions to maintain integrity. Various consensus algorithms like Proof-of-Work (PoW), Proof-of-Stake (PoS), and Practical Byzantine Fault Tolerance (PBFT) are used to achieve this.
+3. Immutability
+Once a block is added to the blockchain, it cannot be altered or removed. This ensures that past records are secure and tamper-evident. Immutability is often secured by cryptographic hash functions.
+4. Transparency
+Every transaction on the blockchain is transparent and verifiable by all users of the network. While identities might be pseudonymous, the transaction history of every blockchain address is publicly viewable by anyone.
+5. Smart Contracts (optional for your assignment)
+Though not required for your assignment, smart contracts are self-executing contracts where the contract terms are directly written into code. They run on the blockchain, which means they are decentralized and can run without the need for intermediaries.
+6. Merkle Trees
+In the context of blockchains, Merkle trees help in efficiently summarizing all the transactions in a block, thereby ensuring that data can be easily verified. They play a vital role in optimizing and verifying the large sets of data stored in blocks.
+7. Blocks and Chain
+Blocks are essentially batches of verified transactions that are "chained" together in a linear, chronological order. Each block contains a reference to the previous block via its hash, thereby forming a chain. This interconnectedness ensures that the entire transaction history can be traced back to the so-called "Genesis Block."
+8. Cryptographic Hash Functions
+Blockchain employs cryptographic hash functions (typically SHA-256 in Bitcoin) for various purposes such as generating addresses, forming the identification of blocks, and creating digital signatures for transaction authentication.
+9. Peer-to-Peer Network
+Blockchain operates on a peer-to-peer (P2P) network architecture. Nodes in these networks are equal participants that can serve both as clients and servers, enhancing redundancy and resiliency.
+10. Transparency vs Privacy
+There's a delicate balance to be maintained between transparency and privacy. While all transactions are transparent and verifiable, blockchain provides a level of privacy by not disclosing the identities associated with blockchain addresses unless that information is revealed during a transaction.
+
+
 ## Brief File Explanation
 
 ### `tests/test_blockchain.py`
