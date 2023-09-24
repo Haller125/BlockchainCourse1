@@ -49,7 +49,8 @@ def main():
         print("2. Add Transaction to Mempool")
         print("3. Mine Block")
         print("4. View Balances")
-        print("5. Exit")
+        print("5. Validate Blockchain")
+        print("6. Exit")
 
         try:
             choice = input("Enter your choice: ")
@@ -62,6 +63,12 @@ def main():
             elif choice == "4":
                 view_balances(blockchain)
             elif choice == "5":
+                valid = blockchain.validate_chain()
+                if valid:
+                    print("Blockchain is valid!")
+                else:
+                    print("Blockchain is invalid!")
+            elif choice == "6":
                 break
             else:
                 print("Invalid choice. Please select a valid option.")

@@ -106,3 +106,26 @@ class Blockchain:
 
         # Clear the mempool after mining
         self.mempool = []
+
+    def validate_chain(self):
+        # Start from the second block and compare with its previous
+        for i in range(1, len(self.chain)):
+            current_block = self.chain[i]
+            previous_block = self.chain[i - 1]
+
+            # Check if the previous_hash matches the hash of the previous block
+            if current_block['previous_hash'] != previous_block['hash']:
+                return False
+
+            # Validate block's own hash
+            reconstructed_block = Block(
+                index=current_block['index'],
+                previous_hash=current_block['previous_hash'],
+                transactions=current_block['transactions'],
+                timestamp=current_block['timestamp']
+            )
+            reconstructed_block.nonce = current_block['nonce']
+            if reconstructed_block.hash_block() != current_block['hash']:
+                return False
+
+        return True
