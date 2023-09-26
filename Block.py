@@ -12,12 +12,6 @@ class Block:
         self.nonce = 0  # For Proof-of-Work
         self.merkle_root = merkle_tree_root(transactions)
 
-    def calculate_merkle_root(self):
-        # Simplified example; in a real-world application,
-        # you would use a Merkle tree structure for efficiency
-        transaction_hashes = [hashlib.sha256(json.dumps(tx).encode()).hexdigest() for tx in self.transactions]
-        return hashlib.sha256("".join(transaction_hashes).encode()).hexdigest()
-
     def hash_block(self):
         block_string = json.dumps({
             'index': self.index,
